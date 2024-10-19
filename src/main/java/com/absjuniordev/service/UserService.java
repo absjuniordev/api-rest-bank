@@ -1,4 +1,4 @@
-package com.absjuniordev.domain.model.service;
+package com.absjuniordev.service;
 
 import com.absjuniordev.domain.model.User;
 

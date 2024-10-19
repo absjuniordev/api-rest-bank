@@ -1,9 +1,8 @@
-package com.absjuniordev.domain.model.service.impl;
+package com.absjuniordev.service.impl;
 
 import com.absjuniordev.domain.model.User;
-import com.absjuniordev.domain.model.service.UserService;
+import com.absjuniordev.service.UserService;
 import com.absjuniordev.domain.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.NoSuchElementException;
