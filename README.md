@@ -38,5 +38,6 @@ classDiagram
   User "1" *-- "N" Feature
   User "1" *-- "1" Card
   User "1" *-- "N" News
-
+```
+https://api-rest-sb3.up.railway.app/swagger-ui/index.html
 
