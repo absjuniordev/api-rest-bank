@@ -62,6 +62,9 @@ A aplicação foi implantada na plataforma Railway e pode ser acessada através 
 - Gestão de cartões
 - Exibição de notícias e recursos disponíveis
 
+### Endpoints API
+![Verbos HTTP](image/user-controller.png)
+
 ## Como Executar o Projeto
 
 1. Clone o repositório:
@@ -79,6 +82,7 @@ A aplicação foi implantada na plataforma Railway e pode ser acessada através 
 
 ### Contribuição
 Sinta-se à vontade para contribuir com o projeto! Envie suas sugestões ou correções por meio de pull requests.
+
 
 ## Licença
 Este projeto está licenciado sob a [Licença MIT](LICENSE).
