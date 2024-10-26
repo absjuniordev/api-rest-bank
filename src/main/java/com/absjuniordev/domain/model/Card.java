@@ -17,6 +17,18 @@ public class Card {
     @Column(name = "available_limit", precision = 13, scale = 2)
     private BigDecimal limit;
 
+    public
+    String getCardBrand() {
+        return cardBrand;
+    }
+
+    public
+    void setCardBrand(String cardBrand) {
+        this.cardBrand = cardBrand;
+    }
+
+    private String cardBrand;
+
     public Long getId() {
         return id;
     }

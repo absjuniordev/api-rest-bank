@@ -22,8 +22,17 @@ class UserServiceImpl implements UserService {
 
     @Override
     public
+    Iterable<User> findAll() {
+        if(userRepository.findAll().isEmpty()){
+            throw new NoSuchElementException("The list is empty");
+        }
+        return userRepository.findAll();
+    }
+
+    @Override
+    public
     User findById(Long id) {
-        return userRepository.findById(id).orElseThrow(NoSuchElementException::new);
+        return userRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Resource ID not found."));
     }
 
     @Override
@@ -34,4 +43,24 @@ class UserServiceImpl implements UserService {
         }
         return userRepository.save(userToCreate);
     }
+
+    @Override
+    public
+    void deleteById(Long id) {
+        if (!userRepository.existsById(id)){
+            throw new IllegalArgumentException("This ID not exists");
+        }
+        userRepository.deleteById(id);
+    }
+
+    @Override
+    public
+    void deleteAll() {
+        if (userRepository.findAll().isEmpty()){
+            throw new NoSuchElementException("The list is empty");
+        }
+         userRepository.deleteAll();
+    }
+
+
 }
