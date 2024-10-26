@@ -1,1 +1,1 @@
-web: java -jar build/libs/api-rest-springboot3-0.0.1-SNAPSHOT.jar
+web: java -jar build/libs/api-rest-bank-0.0.1-SNAPSHOT.jar
