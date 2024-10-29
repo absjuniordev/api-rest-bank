@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Usuário</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+        h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        h2 {
+            margin-top: 30px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, .5);
+        }
+        .help-block {
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+        .error {
+            color: red;
+            font-size: 0.85em;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Cadastro de Usuário</h1>
+    <form action="#" th:action="@{/register}" th:object="${user}" method="post">
+        <div class="form-group">
+            <label for="name">Nome:</label>
+            <input type="text" th:field="*{name}" id="name" class="form-control" placeholder="Digite seu nome" required/>
+            <small class="help-block">Nome completo do usuário.</small>
+        </div>
+
+        <h2>Conta</h2>
+        <div class="form-group">
+            <label for="accountNumber">Número da Conta:</label>
+            <input type="text" th:field="*{account.number}" id="accountNumber" class="form-control" placeholder="Ex: 123456" required/>
+        </div>
+        <div class="form-group">
+            <label for="agency">Agência:</label>
+            <input type="text" th:field="*{account.agency}" id="agency" class="form-control" placeholder="Ex: 987" required/>
+        </div>
+        <div class="form-group">
+            <label for="balance">Saldo:</label>
+            <input type="number" th:field="*{account.balance}" id="balance" class="form-control" placeholder="Ex: 1000" required/>
+        </div>
+        <div class="form-group">
+            <label for="limit">Limite:</label>
+            <input type="number" th:field="*{account.limit}" id="limit" class="form-control" placeholder="Ex: 500" required/>
+        </div>
+
+        <h2>Cartão</h2>
+        <div class="form-group">
+            <label for="cardNumber">Número do Cartão:</label>
+            <input type="text" th:field="*{card.number}" id="cardNumber" class="form-control" placeholder="Digite o número do cartão" required/>
+        </div>
+        <div class="form-group">
+            <label for="cardBrand">Marca do Cartão:</label>
+            <input type="text" th:field="*{card.cardBrand}" id="cardBrand" class="form-control" placeholder="Ex: Visa, MasterCard" required/>
+        </div>
+        <div class="form-group">
+            <label for="cardLimit">Limite do Cartão:</label>
+            <input type="number" th:field="*{card.limit}" id="cardLimit" class="form-control" placeholder="Ex: 1000" required/>
+        </div>
+
+        <h2>Features</h2>
+        <div th:each="feature, iterStat : ${user.features}" class="form-group">
+            <label th:for="'featureIcon' + ${iterStat.index}">Ícone:</label>
+            <input type="text" th:field="*{features[__${iterStat.index}__].icon}" th:id="'featureIcon' + ${iterStat.index}" class="form-control" placeholder="Digite o ícone" required/>
+            <label th:for="'featureDescription' + ${iterStat.index}">Descrição:</label>
+            <input type="text" th:field="*{features[__${iterStat.index}__].description}" th:id="'featureDescription' + ${iterStat.index}" class="form-control" placeholder="Descrição da feature" required/>
+        </div>
+
+        <h2>News</h2>
+        <div th:each="news, iterStat : ${user.news}" class="form-group">
+            <label th:for="'newsIcon' + ${iterStat.index}">Ícone:</label>
+            <input type="text" th:field="*{news[__${iterStat.index}__].icon}" th:id="'newsIcon' + ${iterStat.index}" class="form-control" placeholder="Digite o ícone da notícia" required/>
+            <label th:for="'newsDescription' + ${iterStat.index}">Descrição:</label>
+            <input type="text" th:field="*{news[__${iterStat.index}__].description}" th:id="'newsDescription' + ${iterStat.index}" class="form-control" placeholder="Descrição da notícia" required/>
+        </div>
+        <div class="mt-4">
+            <a type="submit" class="btn btn-primary">Criar Conta</a>
+            <a href="/hello" class="btn btn-secondary">Voltar para a Página Inicial</a>
+        </div>
+    </form>
+
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
