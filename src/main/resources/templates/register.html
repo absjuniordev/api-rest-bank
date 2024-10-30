@@ -101,29 +101,34 @@
             <label for="cardLimit">Limite do Cartão:</label>
             <input type="number" th:field="*{card.limit}" id="cardLimit" class="form-control" placeholder="Ex: 1000" required/>
         </div>
+
         <div class="row">
             <div class="col-md-6">
-        <h2>Features</h2>
-        <div th:each="feature, iterStat : ${user.features}" class="form-group">
-            <label th:for="'featureIcon' + ${iterStat.index}">Ícone:</label>
-            <input type="text" th:field="*{features[__${iterStat.index}__].icon}" th:id="'featureIcon' + ${iterStat.index}" class="form-control" placeholder="Digite o ícone" required/>
-            <label th:for="'featureDescription' + ${iterStat.index}">Descrição:</label>
-            <input type="text" th:field="*{features[__${iterStat.index}__].description}" th:id="'featureDescription' + ${iterStat.index}" class="form-control" placeholder="Descrição da feature" required/>
-        </div>
+
+                <h2>Features</h2>
+                <div th:if="${#lists.isEmpty(user.features)}" class="form-group">
+                    <label for="featureIcon0">Ícone:</label>
+                    <input type="text" th:field="*{features[0].icon}" id="featureIcon0" class="form-control" placeholder="Digite o ícone" required/>
+                    <label for="featureDescription0">Descrição:</label>
+                    <input type="text" th:field="*{features[0].description}" id="featureDescription0" class="form-control" placeholder="Descrição da feature" required/>
+                </div>
             </div>
+
             <div class="col-md-6">
+
         <h2>News</h2>
-        <div th:each="news, iterStat : ${user.news}" class="form-group">
-            <label th:for="'newsIcon' + ${iterStat.index}">Ícone:</label>
-            <input type="text" th:field="*{news[__${iterStat.index}__].icon}" th:id="'newsIcon' + ${iterStat.index}" class="form-control" placeholder="Digite o ícone da notícia" required/>
-            <label th:for="'newsDescription' + ${iterStat.index}">Descrição:</label>
-            <input type="text" th:field="*{news[__${iterStat.index}__].description}" th:id="'newsDescription' + ${iterStat.index}" class="form-control" placeholder="Descrição da notícia" required/>
-        </div>
+                <div th:if="${#lists.isEmpty(user.news)}" class="form-group">
+                    <label for="newsIcon0">Ícone:</label>
+                    <input type="text" th:field="*{news[0].icon}" id="newsIcon0" class="form-control" placeholder="Digite o ícone da notícia" required/>
+                    <label for="newsDescription0">Descrição:</label>
+                    <input type="text" th:field="*{news[0].description}" id="newsDescription0" class="form-control" placeholder="Descrição da notícia" required/>
+                </div>
             </div>
         </div>
+
         <div class="mt-4 d-flex">
             <button type="submit" class="btn btn-primary w-auto" style="margin-right: 10px;">Criar Conta</button>
-            <a href="/hello" class="btn btn-secondary w-auto">Voltar para a Página Inicial</a>
+            <a href="/index" class="btn btn-secondary w-auto">Voltar para a Página Inicial</a>
         </div>
     </form>
 

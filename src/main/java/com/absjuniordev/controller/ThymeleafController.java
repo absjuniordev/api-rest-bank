@@ -23,7 +23,7 @@ public class ThymeleafController {
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
         model.addAttribute("user", new User());
-        return "register"; // nome do template Thymeleaf
+        return "register";
     }
 
     @PostMapping("/register")
@@ -40,7 +40,7 @@ public class ThymeleafController {
     @GetMapping("/list")
     public String listUsers(Model model) {
         model.addAttribute("users", userService.findAll());
-        return "users";
+        return "clients";
     }
 
 }
