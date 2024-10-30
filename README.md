@@ -84,7 +84,3 @@ A aplicação foi implantada na plataforma Railway e pode ser acessada através 
 Sinta-se à vontade para contribuir com o projeto! Envie suas sugestões ou correções por meio de pull requests.
 
 
-## Licença
-Este projeto está licenciado sob a [Licença MIT](LICENSE).
-```
-
