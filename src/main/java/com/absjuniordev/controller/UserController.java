@@ -49,6 +49,7 @@ class UserController {
     public ResponseEntity<User> deleteAll(){
         userService.deleteAll();
         return ResponseEntity.ok().build();
+
     }
 
     @Operation(summary = "Create a user")
@@ -61,6 +62,4 @@ class UserController {
                 .toUri();
         return ResponseEntity.created(location).body(userCreated);
     }
-
-
 }

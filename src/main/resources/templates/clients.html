@@ -6,6 +6,53 @@
     <link rel="stylesheet" th:href="@{/css/styles.css}" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <style>
+        body {
+            background-image: url('/images/list.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #333;
+        }
+        .container {
+            margin-top: 50px;
+            background-color: rgba(255, 255, 255, 0.9); /* Fundo branco semi-transparente */
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+        h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        h2 {
+            margin-top: 30px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, .5);
+        }
+        .help-block {
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+        .error {
+            color: red;
+            font-size: 0.85em;
+        }
+    </style>
 </head>
 <body>
 <div class="container mt-5">
@@ -42,7 +89,7 @@
 
     <div class="text-center mt-3">
         <a href="/register" class="btn btn-primary mt-3">Criar uma Conta</a>
-        <a href="/" class="btn btn-secondary mt-3">Retornar à Tela Inicial</a>
+        <a href="/hello" class="btn btn-secondary mt-3">Retornar à Tela Inicial</a>
     </div>
 </div>
 </body>

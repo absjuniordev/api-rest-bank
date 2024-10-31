@@ -2,14 +2,38 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bem-vindo ao Banco Internacional!</title>
     <link rel="stylesheet" th:href="@{/css/styles.css}" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        h1 {
+            color: #007bff;
+            font-weight: bold;
+        }
+        .lead {
+            color: #6c757d;
+        }
+        .btn {
+            width: 200px;
+            margin: 10px;
+        }
+        .hero-image {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
 <div class="container text-center mt-5">
+    <img src="/images/banck.jpeg" alt="Imagem do Banco" class="hero-image">
     <h1>Bem-vindo ao Banco Internacional</h1>
     <p class="lead">Estamos aqui para ajudar você a gerenciar suas finanças com confiança.</p>
     <div class="mt-4">
@@ -17,5 +41,8 @@
         <a href="/list" class="btn btn-secondary btn-lg">Listar Contas</a>
     </div>
 </div>
+<footer class="text-center mt-5">
+    <p>&copy; 2024 Banco Internacional. Todos os direitos reservados.</p>
+</footer>
 </body>
 </html>

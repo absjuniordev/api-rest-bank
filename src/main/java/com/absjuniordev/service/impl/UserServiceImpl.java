@@ -3,6 +3,7 @@ package com.absjuniordev.service.impl;
 import com.absjuniordev.domain.model.User;
 import com.absjuniordev.service.UserService;
 import com.absjuniordev.domain.repository.UserRepository;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.NoSuchElementException;
@@ -10,7 +11,6 @@ import java.util.NoSuchElementException;
 @Service
 public
 class UserServiceImpl implements UserService {
-
 
    private final
     UserRepository userRepository;
@@ -61,6 +61,8 @@ class UserServiceImpl implements UserService {
         }
          userRepository.deleteAll();
     }
+
+
 
 
 }

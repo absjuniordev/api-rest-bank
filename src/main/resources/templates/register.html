@@ -8,11 +8,15 @@
     <link rel="stylesheet" th:href="@{/css/styles.css}" />
     <style>
         body {
-            background-color: #f8f9fa;
+            background-image: url('/images/register.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #333;
         }
         .container {
             margin-top: 50px;
-            background-color: white;
+            background-color: rgba(255, 255, 255, 0.9);
             border-radius: 8px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             padding: 30px;
@@ -49,6 +53,14 @@
             font-size: 0.85em;
         }
     </style>
+    <script>
+        function formatCardNumber(input) {
+            // Remove todos os caracteres que não sejam dígitos
+            let value = input.value.replace(/\D/g, '');
+            // Divide o número em grupos de 4 dígitos
+            input.value = value.replace(/(\d{4})(?=\d)/g, '$1 ').trim();
+        }
+    </script>
 </head>
 <body>
 <div class="container">
@@ -56,25 +68,23 @@
     <h2>Dados</h2>
     <form action="#" th:action="@{/register}" th:object="${user}" method="post">
         <div class="row">
-            <!-- Primeira coluna -->
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="name">Nome:</label>
                     <input type="text" th:field="*{name}" id="name" class="form-control" placeholder="Digite seu nome" required/>
-                                    </div>
+                </div>
 
                 <div class="form-group">
                     <label for="accountNumber">Número da Conta:</label>
-                    <input type="text" th:field="*{account.number}" id="accountNumber" class="form-control" placeholder="Ex: 123456" required/>
+                    <input type="text" th:field="*{account.number}" id="accountNumber" class="form-control" placeholder="Ex: 123456" required pattern="\d{6}" title="Deve ter exatamente 6 dígitos."/>
                 </div>
 
                 <div class="form-group">
                     <label for="agency">Agência:</label>
-                    <input type="text" th:field="*{account.agency}" id="agency" class="form-control" placeholder="Ex: 987" required/>
+                    <input type="text" th:field="*{account.agency}" id="agency" class="form-control" placeholder="Ex: 987" required pattern="\d{3}" title="Deve ter exatamente 3 dígitos."/>
                 </div>
             </div>
 
-            <!-- Segunda coluna -->
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="balance">Saldo:</label>
@@ -91,7 +101,7 @@
         <h2>Cartão</h2>
         <div class="form-group">
             <label for="cardNumber">Número do Cartão:</label>
-            <input type="text" th:field="*{card.number}" id="cardNumber" class="form-control" placeholder="Digite o número do cartão" required/>
+            <input type="text" th:field="*{card.number}" id="cardNumber" class="form-control" placeholder="Digite o número do cartão" required pattern="(\d{4} ){3}\d{4}" title="Deve ter 16 dígitos, no formato 1234 5678 9012 3456." oninput="formatCardNumber(this)"/>
         </div>
         <div class="form-group">
             <label for="cardBrand">Bandeira do Cartão:</label>
@@ -104,7 +114,6 @@
 
         <div class="row">
             <div class="col-md-6">
-
                 <h2>Features</h2>
                 <div th:if="${#lists.isEmpty(user.features)}" class="form-group">
                     <label for="featureIcon0">Ícone:</label>
@@ -115,8 +124,7 @@
             </div>
 
             <div class="col-md-6">
-
-        <h2>News</h2>
+                <h2>News</h2>
                 <div th:if="${#lists.isEmpty(user.news)}" class="form-group">
                     <label for="newsIcon0">Ícone:</label>
                     <input type="text" th:field="*{news[0].icon}" id="newsIcon0" class="form-control" placeholder="Digite o ícone da notícia" required/>
@@ -128,11 +136,9 @@
 
         <div class="mt-4 d-flex">
             <button type="submit" class="btn btn-primary w-auto" style="margin-right: 10px;">Criar Conta</button>
-            <a href="/" class="btn btn-secondary w-auto">Voltar para a Página Inicial</a>
+            <a href="/hello" class="btn btn-secondary w-auto">Voltar para a Página Inicial</a>
         </div>
     </form>
-
-
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

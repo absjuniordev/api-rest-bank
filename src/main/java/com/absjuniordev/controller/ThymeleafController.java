@@ -15,7 +15,7 @@ public class ThymeleafController {
     @GetMapping("/hello")
     public String hello(Model model) {
         model.addAttribute("nome", "Mundo");
-        return "index";
+        return "home";
     }
 
     @GetMapping("/register")
