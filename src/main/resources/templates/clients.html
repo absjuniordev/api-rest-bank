@@ -9,25 +9,37 @@
 </head>
 <body>
 <div class="container mt-5">
-    <h1 class="text-center">Contas Cadastrados</h1>
-    <table class="table table-striped table-bordered mt-4">
+    <h1 class="text-center">Contas Cadastradas</h1>
+
+    <div th:if="${#lists.isEmpty(users)}" class="text-center mt-4">
+        <p><strong>Nenhum cliente cadastrado!</strong></p>
+        <p>Por favor, crie uma Conta.</p>
+    </div>
+
+    <table class="table table-striped table-bordered mt-4" th:if="${!#lists.isEmpty(users)}">
         <thead class="thead-dark">
         <tr>
-            <th>ID</th>
             <th>Nome</th>
             <th>Agência</th>
             <th>Conta</th>
+            <th>Ações</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="user : ${users}">
-            <td th:text="${user.id}"></td>
             <td th:text="${user.name}"></td>
             <td th:text="${user.account.agency}"></td>
             <td th:text="${user.account.number}"></td>
+            <td>
+                <a th:href="@{'/detail/' + ${user.id}}" class="btn btn-info btn-sm">Ver Detalhes</a>
+                <form th:action="@{/delete/{id}(id=${user.id})}" method="post" style="display:inline;" onsubmit="return confirm('Você tem certeza que deseja excluir este usuário?');">
+                    <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+                </form>
+            </td>
         </tr>
         </tbody>
     </table>
+
     <div class="text-center mt-3">
         <a href="/register" class="btn btn-primary mt-3">Criar uma Conta</a>
         <a href="/" class="btn btn-secondary mt-3">Retornar à Tela Inicial</a>

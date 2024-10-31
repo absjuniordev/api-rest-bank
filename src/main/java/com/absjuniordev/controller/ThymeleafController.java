@@ -5,9 +5,7 @@ import com.absjuniordev.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class ThymeleafController {
@@ -39,8 +37,26 @@ public class ThymeleafController {
 
     @GetMapping("/list")
     public String listUsers(Model model) {
-        model.addAttribute("users", userService.findAll());
+        Iterable<User> users = userService.findAll();
+        model.addAttribute("users", users);
+        model.addAttribute("isEmpty", !users.iterator().hasNext());
         return "clients";
     }
+
+
+    @GetMapping("/detail/{id}")
+    public String detailClients(@PathVariable Long id, Model model) {
+        User user = userService.findById(id);
+        model.addAttribute("user", user);
+        return "detail-clients";
+    }
+
+    @PostMapping("/delete/{id}")
+    public String deleteUser(@PathVariable Long id) {
+        userService.deleteById(id);
+        return "redirect:/list";
+    }
+
+
 
 }

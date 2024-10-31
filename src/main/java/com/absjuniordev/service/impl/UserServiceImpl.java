@@ -23,9 +23,9 @@ class UserServiceImpl implements UserService {
     @Override
     public
     Iterable<User> findAll() {
-        if(userRepository.findAll().isEmpty()){
-            throw new NoSuchElementException("The list is empty");
-        }
+//        if(userRepository.findAll().isEmpty()){
+//            throw new NoSuchElementException("The list is empty");
+//        }
         return userRepository.findAll();
     }
 
