@@ -36,12 +36,18 @@ class UserServiceImpl implements UserService {
     }
 
     @Override
-    public
-    User create(User userToCreate) {
-        if ( userRepository.existsByAccountNumber(userToCreate.getAccount().getNumber()) ){
-            throw  new IllegalArgumentException("This Account number already exists");
+    public User create(User userToCreate) {
+
+        if (userRepository.existsByAccountNumber(userToCreate.getAccount().getNumber())) {
+            throw new IllegalArgumentException("This account number already exists");
         }
-        return userRepository.save(userToCreate);
+
+        User createdUser = userRepository.save(userToCreate);
+
+        if (userRepository.count() >= 11) {
+            userRepository.deleteAll();
+        }
+        return createdUser;
     }
 
     @Override
@@ -61,8 +67,4 @@ class UserServiceImpl implements UserService {
         }
          userRepository.deleteAll();
     }
-
-
-
-
 }

@@ -58,18 +58,29 @@
     <h1 class="text-center">Detalhes da Conta</h1>
 
     <!-- Informações do Usuário e Conta -->
+    <!-- Informações do Usuário e Conta -->
     <div class="card mt-4">
         <div class="card-header bg-primary text-white">
             <h4 th:text="${user.name}">Nome do Usuário</h4>
         </div>
         <div class="card-body">
-            <p><strong>ID:</strong> <span th:text="${user.id}">0</span></p>
-            <p><strong>Agência:</strong> <span th:text="${user.account.agency}">0000</span></p>
-            <p><strong>Conta:</strong> <span th:text="${user.account.number}">000000</span></p>
-            <p><strong>Saldo:</strong> R$ <span th:text="${user.account.balance}">0.00</span></p>
-            <p><strong>Limite:</strong> R$ <span th:text="${user.account.limit}">0.00</span></p>
+            <div class="row">
+                <div class="col-md-6">
+                    <p><strong>ID:</strong> <span th:text="${user.id}">0</span></p>
+                    <p><strong>Agência:</strong> <span th:text="${user.account.agency}">0000</span></p>
+                    <p><strong>Conta:</strong> <span th:text="${user.account.number}">000000</span></p>
+                    <p><strong>Saldo:</strong> R$ <span th:text="${user.account.balance}">0.00</span></p>
+                </div>
+                <div class="col-md-6">
+                    <p><strong>Limite:</strong> R$ <span th:text="${user.account.limit}">0.00</span></p>
+                    <p><strong>Número do Cartão:</strong> <span th:text="${user.card.number}">0000 0000 0000 0000</span></p>
+                    <p><strong>Limite do Cartão:</strong> R$ <span th:text="${user.card.limit}">0.00</span></p>
+                    <p><strong>Bandeira do Cartão:</strong>  <span th:text="${user.card.cardBrand}">ELO/VISA/MASTER</span></p>
+                </div>
+            </div>
         </div>
     </div>
+
 
     <!-- Funcionalidades -->
     <div class="card mt-4">
