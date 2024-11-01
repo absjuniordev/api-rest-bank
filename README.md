@@ -24,7 +24,7 @@ Este projeto é uma API RESTful que simula um banco, demonstrando a estrutura de
 
 ### Exemplo json para criação de uma conta
 
-```mermaid
+```
 {
     "name": "Maria Oliveira",
     "account": {
